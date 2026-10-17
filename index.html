@@ -3,124 +3,212 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Career Opportunity | Overview</title>
+  <title>Clean Energy Careers | Priority Access</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #ff6600;
-      --primary-hover: #e65c00;
-      --dark: #1e293b;
-      --light-bg: #f8fafc;
+      --bg-dark: #0a0f1d;
       --card-bg: #ffffff;
-      --border: #e2e8f0;
-      --text: #334155;
+      --accent-start: #ff5722;
+      --accent-end: #ff9100;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --info-bg: #f0f7ff;
+      --info-border: #c8e1fd;
+      --info-text: #034887;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
     body {
-      background: var(--light-bg);
-      color: var(--text);
+      background: radial-gradient(circle at 10% 20%, #172554 0%, #0b1120 75%), var(--bg-dark);
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 24px 16px;
+      color: var(--text-main);
     }
 
-    .container {
-      background: var(--card-bg);
+    .wrapper {
       width: 100%;
-      max-width: 460px;
-      padding: 40px 32px;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-      border: 1px solid var(--border);
+      max-width: 480px;
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      position: relative;
     }
 
-    .badge {
-      display: inline-block;
-      font-size: 11px;
+    .top-bar {
+      height: 6px;
+      background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+    }
+
+    .content {
+      padding: 36px 32px 32px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff7ed;
+      color: #c2410c;
+      font-size: 12px;
       font-weight: 700;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--primary);
-      background: rgba(255, 102, 0, 0.1);
       padding: 6px 12px;
-      border-radius: 20px;
+      border-radius: 100px;
+      border: 1px solid #ffedd5;
       margin-bottom: 16px;
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ea580c;
     }
 
     h1 {
       font-size: 24px;
-      font-weight: 700;
-      color: var(--dark);
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
       margin-bottom: 8px;
     }
 
     p.subtitle {
       font-size: 14px;
-      color: #64748b;
+      color: var(--text-muted);
       line-height: 1.5;
-      margin-bottom: 28px;
+      margin-bottom: 22px;
+    }
+
+    .sms-notice {
+      background: var(--info-bg);
+      border: 1px solid var(--info-border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+
+    .sms-notice svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .sms-notice p {
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--info-text);
+      font-weight: 500;
+    }
+
+    .sms-notice strong {
+      color: #012950;
+      font-weight: 700;
     }
 
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     label {
       display: block;
       font-size: 13px;
       font-weight: 600;
-      color: var(--dark);
+      color: #334155;
       margin-bottom: 6px;
+    }
+
+    .input-wrapper {
+      position: relative;
     }
 
     input {
       width: 100%;
-      padding: 12px 14px;
+      padding: 13px 14px;
       font-size: 15px;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      color: var(--dark);
-      transition: all 0.2s ease;
+      font-weight: 500;
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
       outline: none;
+      transition: all 0.2s ease;
+      background: #fafafa;
+      color: var(--text-main);
     }
 
     input:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.15);
+      background: #ffffff;
+      border-color: #ea580c;
+      box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.12);
     }
 
     button {
       width: 100%;
-      padding: 14px;
-      background: var(--primary);
-      color: #fff;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+      color: #ffffff;
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 700;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       margin-top: 10px;
-      transition: background 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 14px rgba(255, 87, 34, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
     }
 
-    button:hover {
-      background: var(--primary-hover);
+    button:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(255, 87, 34, 0.45);
+    }
+
+    button:active:not(:disabled) {
+      transform: translateY(0);
     }
 
     button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
+      opacity: 0.85;
+      cursor: wait;
+      box-shadow: none;
     }
 
-    .footer-note {
+    .spinner {
+      display: none;
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #ffffff;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .privacy-text {
       font-size: 12px;
       color: #94a3b8;
       text-align: center;
@@ -128,93 +216,154 @@
       line-height: 1.4;
     }
 
-    /* Confirmation State */
-    .success-state {
+    /* Success Panel */
+    .success-card {
       display: none;
       text-align: center;
-      padding: 20px 0;
+      padding: 20px 8px;
+      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .success-icon {
-      width: 56px;
-      height: 56px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .check-ring {
+      width: 68px;
+      height: 68px;
       background: #ecfdf5;
+      border: 2px solid #a7f3d0;
       color: #059669;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .success-card h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .success-card p {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.6;
       margin-bottom: 16px;
     }
 
-    .success-state h2 {
-      font-size: 20px;
-      color: var(--dark);
-      margin-bottom: 8px;
-    }
-
-    .success-state p {
-      font-size: 14px;
-      color: #64748b;
-      line-height: 1.5;
+    .number-highlight {
+      display: inline-block;
+      background: #f1f5f9;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: 0.02em;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <!-- Active Form -->
-    <div id="formContainer">
-      <span class="badge">Energy Careers</span>
-      <h1>Opportunity Overview</h1>
-      <p class="subtitle">Enter your details below to receive the video overview and program outline directly to your phone.</p>
+  <div class="wrapper">
+    <div class="top-bar"></div>
+    <div class="content">
 
-      <form id="leadForm">
-        <div class="form-group">
-          <label for="first_name">First Name</label>
-          <input type="text" id="first_name" name="First Name" placeholder="Jane" required>
+      <!-- Form View -->
+      <div id="formSection">
+        <div class="pill">
+          <div class="pill-dot"></div>
+          Direct Candidate Pathway
+        </div>
+        <h1>Take the Next Step</h1>
+        <p class="subtitle">Complete your details to receive private access to the clean energy career opportunity briefing.</p>
+
+        <!-- Reassuring SMS Disclosure -->
+        <div class="sms-notice">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <p>As part of our standard onboarding review, you'll receive a direct text message from <strong>209-639-4845</strong> within 24 hours containing your personalized video link.</p>
         </div>
 
-        <div class="form-group">
-          <label for="last_name">Last Name</label>
-          <input type="text" id="last_name" name="Last Name" placeholder="Doe" required>
+        <form id="recruitForm">
+          <div class="form-group">
+            <label for="first_name">First Name</label>
+            <div class="input-wrapper">
+              <input type="text" id="first_name" placeholder="Alex" required autocomplete="given-name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <div class="input-wrapper">
+              <input type="text" id="last_name" placeholder="Morgan" required autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Mobile Phone</label>
+            <div class="input-wrapper">
+              <input type="tel" id="phone" placeholder="(555) 000-0000" required autocomplete="tel">
+            </div>
+          </div>
+
+          <button type="submit" id="submitBtn">
+            <span class="spinner" id="spinner"></span>
+            <span id="btnText">Request Orientation Access</span>
+          </button>
+        </form>
+
+        <p class="privacy-text">Your information is handled securely and used exclusively to send your orientation invitation.</p>
+      </div>
+
+      <!-- Immediate Feedback State -->
+      <div id="successSection" class="success-card">
+        <div class="check-ring">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
         </div>
+        <h2>Request Received!</h2>
+        <p>Your details have been logged into the candidate queue. Please keep an eye on your mobile device—your direct access link will be texted from:</p>
+        <div class="number-highlight">209-639-4845</div>
+        <p style="margin-top: 14px; font-size: 13px; color: #64748b;">Expect your message within the next 24 hours.</p>
+      </div>
 
-        <div class="form-group">
-          <label for="phone">Mobile Phone</label>
-          <input type="tel" id="phone" name="Phone Number" placeholder="(555) 000-0000" required>
-        </div>
-
-        <button type="submit" id="submitBtn">Get Career Overview</button>
-      </form>
-
-      <p class="footer-note">Your information is kept strictly confidential and used only to send the opportunity link.</p>
-    </div>
-
-    <!-- Success Message -->
-    <div id="successState" class="success-state">
-      <div class="success-icon">✓</div>
-      <h2>You're all set!</h2>
-      <p>Keep an eye on your mobile device. Your access link and details will arrive shortly via text message.</p>
     </div>
   </div>
 
   <script>
-    const form = document.getElementById('leadForm');
-    const formContainer = document.getElementById('formContainer');
-    const successState = document.getElementById('successState');
+    const form = document.getElementById('recruitForm');
     const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const spinner = document.getElementById('spinner');
+    const formSection = document.getElementById('formSection');
+    const successSection = document.getElementById('successSection');
+    const phoneInput = document.getElementById('phone');
+
+    // Auto-formats standard 10-digit US telephone numbers as user types
+    phoneInput.addEventListener('input', function(e) {
+      let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+      e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+    });
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
+
+      // UI state transition - immediate visual feedback
       submitBtn.disabled = true;
-      submitBtn.innerText = "Submitting...";
+      spinner.style.display = 'inline-block';
+      btnText.innerText = 'Securing Your Priority Spot...';
 
       const payload = {
         "First Name": document.getElementById('first_name').value.trim(),
         "Last Name": document.getElementById('last_name').value.trim(),
-        "Phone Number": document.getElementById('phone').value.trim(),
+        "Mobile Phone": phoneInput.value.trim(),
         "_subject": "🚨 [URGENT LEAD] New Recruit Application",
         "_template": "table",
         "_captcha": "false"
@@ -228,15 +377,19 @@
         },
         body: JSON.stringify(payload)
       })
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) throw new Error('Submission error');
+        return response.json();
+      })
       .then(() => {
-        formContainer.style.display = 'none';
-        successState.style.display = 'block';
+        formSection.style.display = 'none';
+        successSection.style.display = 'block';
       })
       .catch(() => {
-        alert("Something went wrong. Please check your connection and try again.");
+        alert("We were unable to submit your request. Please verify your connection and try again.");
         submitBtn.disabled = false;
-        submitBtn.innerText = "Get Career Overview";
+        spinner.style.display = 'none';
+        btnText.innerText = 'Request Orientation Access';
       });
     });
   </script>
