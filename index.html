@@ -3,61 +3,241 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sunrun Career Opportunity</title>
+  <title>Career Opportunity | Overview</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background-color: #f4f6f8; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
-    .card { background: #ffffff; padding: 32px 24px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); width: 100%; max-width: 440px; }
-    h1 { font-size: 22px; color: #1a1a1a; margin-bottom: 12px; text-align: center; }
-    .notice { font-size: 14px; color: #555; background: #eef4ff; border-left: 4px solid #0056b3; padding: 12px; border-radius: 4px; margin-bottom: 24px; line-height: 1.4; }
-    .field { margin-bottom: 16px; }
-    label { display: block; font-size: 13px; font-weight: 600; color: #333; margin-bottom: 6px; }
-    input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; outline: none; }
-    input:focus { border-color: #ff6600; }
-    button { width: 100%; padding: 14px; background-color: #ff6600; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 8px; transition: background 0.2s; }
-    button:hover { background-color: #e55b00; }
+    :root {
+      --primary: #ff6600;
+      --primary-hover: #e65c00;
+      --dark: #1e293b;
+      --light-bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --text: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: var(--light-bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .container {
+      background: var(--card-bg);
+      width: 100%;
+      max-width: 460px;
+      padding: 40px 32px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+      border: 1px solid var(--border);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+      background: rgba(255, 102, 0, 0.1);
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    p.subtitle {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.5;
+      margin-bottom: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 15px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      color: var(--dark);
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.15);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s ease;
+    }
+
+    button:hover {
+      background: var(--primary-hover);
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .footer-note {
+      font-size: 12px;
+      color: #94a3b8;
+      text-align: center;
+      margin-top: 18px;
+      line-height: 1.4;
+    }
+
+    /* Confirmation State */
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .success-icon {
+      width: 56px;
+      height: 56px;
+      background: #ecfdf5;
+      color: #059669;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 16px;
+    }
+
+    .success-state h2 {
+      font-size: 20px;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .success-state p {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.5;
+    }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h1>Career Opportunity Overview</h1>
-    <div class="notice">
-      Please enter your name and phone number below to be directed immediately to the Sunrun Career Opportunity video presentation.
+  <div class="container">
+    <!-- Active Form -->
+    <div id="formContainer">
+      <span class="badge">Energy Careers</span>
+      <h1>Opportunity Overview</h1>
+      <p class="subtitle">Enter your details below to receive the video overview and program outline directly to your phone.</p>
+
+      <form id="leadForm">
+        <div class="form-group">
+          <label for="first_name">First Name</label>
+          <input type="text" id="first_name" name="First Name" placeholder="Jane" required>
+        </div>
+
+        <div class="form-group">
+          <label for="last_name">Last Name</label>
+          <input type="text" id="last_name" name="Last Name" placeholder="Doe" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Mobile Phone</label>
+          <input type="tel" id="phone" name="Phone Number" placeholder="(555) 000-0000" required>
+        </div>
+
+        <button type="submit" id="submitBtn">Get Career Overview</button>
+      </form>
+
+      <p class="footer-note">Your information is kept strictly confidential and used only to send the opportunity link.</p>
     </div>
 
-    <form id="redirectForm">
-      <div class="field">
-        <label for="first_name">First Name</label>
-        <input type="text" id="first_name" name="first_name" placeholder="John" required>
-      </div>
-
-      <div class="field">
-        <label for="last_name">Last Name</label>
-        <input type="text" id="last_name" name="last_name" placeholder="Doe" required>
-      </div>
-
-      <div class="field">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" required>
-      </div>
-
-      <button type="submit">Watch Career Video</button>
-    </form>
+    <!-- Success Message -->
+    <div id="successState" class="success-state">
+      <div class="success-icon">✓</div>
+      <h2>You're all set!</h2>
+      <p>Keep an eye on your mobile device. Your access link and details will arrive shortly via text message.</p>
+    </div>
   </div>
 
   <script>
-    document.getElementById('redirectForm').addEventListener('submit', function(e) {
+    const form = document.getElementById('leadForm');
+    const formContainer = document.getElementById('formContainer');
+    const successState = document.getElementById('successState');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting...";
 
-      const firstName = encodeURIComponent(document.getElementById('first_name').value.trim());
-      const lastName = encodeURIComponent(document.getElementById('last_name').value.trim());
-      const phone = encodeURIComponent(document.getElementById('phone').value.trim());
+      const payload = {
+        "First Name": document.getElementById('first_name').value.trim(),
+        "Last Name": document.getElementById('last_name').value.trim(),
+        "Phone Number": document.getElementById('phone').value.trim(),
+        "_subject": "🚨 [URGENT LEAD] New Recruit Application",
+        "_template": "table",
+        "_captcha": "false"
+      };
 
-      // Passes contact data into ConveYour's opt-in intake
-      const targetUrl = `https://sunrun.conveyour.com/c/ht0ie6noia/sunrun-opportunity?first_name=${firstName}&last_name=${lastName}&phone=${phone}`;
-
-      window.location.href = targetUrl;
+      fetch("https://formsubmit.co/ajax/jhunger4d@gmail.com", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(response => response.json())
+      .then(() => {
+        formContainer.style.display = 'none';
+        successState.style.display = 'block';
+      })
+      .catch(() => {
+        alert("Something went wrong. Please check your connection and try again.");
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Get Career Overview";
+      });
     });
   </script>
 
