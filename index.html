@@ -54,7 +54,8 @@
       const lastName = encodeURIComponent(document.getElementById('last_name').value.trim());
       const phone = encodeURIComponent(document.getElementById('phone').value.trim());
 
-      const targetUrl = `https://sunrun.conveyour.com/ui/portal/kt9doe8rgn/course/6ac96db4e1a9d301c8041b23/lesson/6ac96f0ee1a9d30262546503?first_name=${firstName}&last_name=${lastName}&phone=${phone}`;
+      // Passes contact data into ConveYour's opt-in intake
+      const targetUrl = `https://sunrun.conveyour.com/c/ht0ie6noia/sunrun-opportunity?first_name=${firstName}&last_name=${lastName}&phone=${phone}`;
 
       window.location.href = targetUrl;
     });
