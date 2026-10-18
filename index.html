@@ -306,6 +306,13 @@
           </div>
 
           <div class="form-group">
+            <label for="email">Email Address</label>
+            <div class="input-wrapper">
+              <input type="email" id="email" placeholder="alex@example.com" required autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form-group">
             <label for="phone">Mobile Phone</label>
             <div class="input-wrapper">
               <input type="tel" id="phone" placeholder="(555) 000-0000" required autocomplete="tel">
@@ -355,7 +362,6 @@
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      // UI state transition - immediate visual feedback
       submitBtn.disabled = true;
       spinner.style.display = 'inline-block';
       btnText.innerText = 'Securing Your Priority Spot...';
@@ -363,6 +369,7 @@
       const payload = {
         "First Name": document.getElementById('first_name').value.trim(),
         "Last Name": document.getElementById('last_name').value.trim(),
+        "Email": document.getElementById('email').value.trim(),
         "Mobile Phone": phoneInput.value.trim(),
         "_subject": "🚨 [URGENT LEAD] New Recruit Application",
         "_template": "table",
@@ -389,7 +396,7 @@
         alert("We were unable to submit your request. Please verify your connection and try again.");
         submitBtn.disabled = false;
         spinner.style.display = 'none';
-        btnText.innerText = 'Request Orientation Access';
+        btnText.innerText = 'Request Your Video Link';
       });
     });
   </script>
