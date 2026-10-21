@@ -6,56 +6,93 @@
   <title>Clean Energy Careers | Priority Access</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg-dark: #0a0f1d;
-      --card-bg: #ffffff;
-      --accent-start: #ff5722;
-      --accent-end: #ff9100;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --border-color: #e2e8f0;
-      --info-bg: #f0f7ff;
-      --info-border: #c8e1fd;
-      --info-text: #034887;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
     body {
-      background: radial-gradient(circle at 10% 20%, #172554 0%, #0b1120 75%), var(--bg-dark);
+      background-color: #F0F4FF;
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 24px 16px;
-      color: var(--text-main);
+      padding: 32px 16px 60px;
+      color: #2c3345;
     }
 
+    /* Top Sunrun Brand Logo */
+    .brand-header {
+      width: 100%;
+      max-width: 680px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .brand-header img {
+      max-width: 320px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* Form Container Card */
     .wrapper {
       width: 100%;
-      max-width: 480px;
-      background: var(--card-bg);
-      border-radius: 20px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
-      overflow: hidden;
-      position: relative;
+      max-width: 680px;
+      background: #ffffff;
+      border-radius: 6px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+      padding: 42px 48px;
     }
 
-    .top-bar {
-      height: 6px;
-      background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+    @media (max-width: 600px) {
+      .wrapper {
+        padding: 28px 20px;
+      }
     }
 
-    .content {
-      padding: 36px 32px 32px;
+    /* Header Collage + Intro */
+    .header-layout {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+
+    .header-image-box {
+      flex-shrink: 0;
+      width: 210px;
+      height: 210px;
+    }
+
+    .header-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .header-text-box {
+      flex: 1;
+    }
+
+    @media (max-width: 600px) {
+      .header-layout {
+        flex-direction: column;
+        text-align: center;
+      }
+      .header-image-box {
+        width: 180px;
+        height: 180px;
+      }
     }
 
     .pill {
@@ -64,14 +101,14 @@
       gap: 6px;
       background: #fff7ed;
       color: #c2410c;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      padding: 6px 12px;
+      padding: 4px 10px;
       border-radius: 100px;
       border: 1px solid #ffedd5;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .pill-dot {
@@ -83,27 +120,26 @@
 
     h1 {
       font-size: 24px;
-      font-weight: 800;
-      color: var(--text-main);
-      letter-spacing: -0.02em;
+      font-weight: 700;
+      color: #2c3345;
       line-height: 1.25;
       margin-bottom: 8px;
     }
 
     p.subtitle {
       font-size: 14px;
-      color: var(--text-muted);
+      color: #555e6d;
       line-height: 1.5;
-      margin-bottom: 22px;
     }
 
+    /* SMS Notice Box */
     .sms-notice {
-      background: var(--info-bg);
-      border: 1px solid var(--info-border);
-      border-radius: 12px;
-      padding: 14px 16px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 12px 14px;
       display: flex;
-      gap: 12px;
+      gap: 10px;
       align-items: flex-start;
       margin-bottom: 24px;
     }
@@ -116,24 +152,38 @@
     .sms-notice p {
       font-size: 13px;
       line-height: 1.45;
-      color: var(--info-text);
+      color: #475569;
       font-weight: 500;
     }
 
     .sms-notice strong {
-      color: #012950;
+      color: #1e293b;
       font-weight: 700;
     }
 
+    /* Form Fields */
     .form-group {
-      margin-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 520px) {
+      .row-2 {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
     }
 
     label {
       display: block;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
-      color: #334155;
+      color: #2c3345;
       margin-bottom: 6px;
     }
 
@@ -143,52 +193,48 @@
       margin-left: 2px;
     }
 
-    .input-wrapper {
-      position: relative;
+    .sub-label {
+      display: block;
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 4px;
     }
 
-    input, select {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select {
       width: 100%;
-      padding: 13px 14px;
-      font-size: 15px;
-      font-weight: 500;
-      border: 1.5px solid var(--border-color);
-      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
+      border: 1px solid #c3cad8;
+      border-radius: 4px;
       outline: none;
-      transition: all 0.2s ease;
-      background: #fafafa;
-      color: var(--text-main);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      background: #ffffff;
+      color: #2c3345;
+    }
+
+    input:focus, select:focus {
+      border-color: #2c3345;
+      box-shadow: 0 0 0 2px rgba(44, 51, 69, 0.12);
     }
 
     select {
       appearance: none;
       background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
       background-repeat: no-repeat;
-      background-position: right 14px center;
-      background-size: 16px;
+      background-position: right 12px center;
+      background-size: 14px;
       cursor: pointer;
     }
 
-    input:focus, select:focus {
-      background: #ffffff;
-      border-color: #ea580c;
-      box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.12);
-    }
-
+    /* Checkbox list */
     .checkbox-group {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      background: #fafafa;
-      padding: 12px 14px;
-      border-radius: 10px;
-      border: 1.5px solid var(--border-color);
-      transition: border-color 0.2s ease;
-    }
-
-    .checkbox-group.has-error {
-      border-color: #dc2626;
-      background: #fef2f2;
+      gap: 10px;
+      padding: 4px 0;
     }
 
     .checkbox-item {
@@ -196,18 +242,19 @@
       align-items: center;
       gap: 10px;
       cursor: pointer;
-      user-select: none;
       font-size: 14px;
       font-weight: 500;
-      color: #334155;
+      color: #2c3345;
+      user-select: none;
     }
 
     .checkbox-item input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      accent-color: #ea580c;
+      width: 16px;
+      height: 16px;
+      accent-color: #2c3345;
       cursor: pointer;
       margin: 0;
+      border-radius: 3px;
     }
 
     .error-msg {
@@ -215,48 +262,47 @@
       color: #dc2626;
       font-size: 12px;
       font-weight: 600;
-      margin-top: 5px;
+      margin-top: 6px;
+    }
+
+    /* Centered Dark Button */
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 28px;
     }
 
     button {
-      width: 100%;
-      padding: 15px;
-      background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+      min-width: 210px;
+      padding: 13px 32px;
+      background-color: #2c3345;
       color: #ffffff;
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 600;
       border: none;
-      border-radius: 10px;
+      border-radius: 4px;
       cursor: pointer;
-      margin-top: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      box-shadow: 0 4px 14px rgba(255, 87, 34, 0.35);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+      transition: background-color 0.15s ease;
     }
 
     button:hover:not(:disabled) {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(255, 87, 34, 0.45);
-    }
-
-    button:active:not(:disabled) {
-      transform: translateY(0);
+      background-color: #1e2432;
     }
 
     button:disabled {
       opacity: 0.85;
       cursor: wait;
-      box-shadow: none;
     }
 
     .spinner {
       display: none;
-      width: 18px;
-      height: 18px;
-      border: 2.5px solid rgba(255, 255, 255, 0.3);
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: 50%;
       border-top-color: #ffffff;
       animation: spin 0.8s linear infinite;
@@ -270,26 +316,20 @@
       font-size: 12px;
       color: #94a3b8;
       text-align: center;
-      margin-top: 18px;
+      margin-top: 22px;
       line-height: 1.4;
     }
 
-    /* Success Panel */
+    /* Success Card */
     .success-card {
       display: none;
       text-align: center;
-      padding: 20px 8px;
-      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      padding: 24px 8px;
     }
 
     .check-ring {
-      width: 68px;
-      height: 68px;
+      width: 64px;
+      height: 64px;
       background: #ecfdf5;
       border: 2px solid #a7f3d0;
       color: #059669;
@@ -302,8 +342,8 @@
 
     .success-card h2 {
       font-size: 22px;
-      font-weight: 800;
-      color: var(--text-main);
+      font-weight: 700;
+      color: #2c3345;
       margin-bottom: 10px;
     }
 
@@ -318,7 +358,7 @@
       display: inline-block;
       background: #f1f5f9;
       padding: 6px 14px;
-      border-radius: 8px;
+      border-radius: 6px;
       font-weight: 700;
       color: #0f172a;
       letter-spacing: 0.02em;
@@ -327,114 +367,122 @@
 </head>
 <body>
 
+  <!-- Sunrun Top Logo -->
+  <div class="brand-header">
+    <img src="SunrunLogo.png" alt="Sunrun">
+  </div>
+
   <div class="wrapper">
-    <div class="top-bar"></div>
-    <div class="content">
 
-      <!-- Form View -->
-      <div id="formSection">
-        <div class="pill">
-          <div class="pill-dot"></div>
-          Direct Candidate Pathway
+    <!-- Form Section -->
+    <div id="formSection">
+      
+      <!-- Top Layout with Square Image & Header -->
+      <div class="header-layout">
+        <div class="header-image-box">
+          <img src="SunrunSquare.png" alt="Sunrun Team">
         </div>
-        <h1>Take the Next Step</h1>
-        <p class="subtitle">Submit your details to receive access to the career opportunity video.</p>
-
-        <!-- Reassuring SMS Disclosure -->
-        <div class="sms-notice">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
-          <p>After submitting your info, you'll receive a direct text message from <strong>209-639-4845</strong> within 24 hours containing your personalized video link.</p>
+        <div class="header-text-box">
+          <div class="pill">
+            <div class="pill-dot"></div>
+            Direct Candidate Pathway
+          </div>
+          <h1>Take the Next Step</h1>
+          <p class="subtitle">Submit your details to receive access to the career opportunity video.</p>
         </div>
+      </div>
 
-        <form id="recruitForm">
+      <!-- SMS Notification Card -->
+      <div class="sms-notice">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <p>After submitting your info, you'll receive a direct text message from <strong>209-639-4845</strong> within 24 hours containing your personalized video link.</p>
+      </div>
+
+      <form id="recruitForm">
+        <!-- Name Row -->
+        <div class="row-2">
           <div class="form-group">
             <label for="first_name">First Name<span class="req">*</span></label>
-            <div class="input-wrapper">
-              <input type="text" id="first_name" placeholder="Alex" required autocomplete="given-name">
-            </div>
+            <input type="text" id="first_name" placeholder="Alex" required autocomplete="given-name">
+            <span class="sub-label">First Name</span>
           </div>
 
           <div class="form-group">
             <label for="last_name">Last Name<span class="req">*</span></label>
-            <div class="input-wrapper">
-              <input type="text" id="last_name" placeholder="Morgan" required autocomplete="family-name">
-            </div>
+            <input type="text" id="last_name" placeholder="Morgan" required autocomplete="family-name">
+            <span class="sub-label">Last Name</span>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label for="email">Email Address<span class="req">*</span></label>
-            <div class="input-wrapper">
-              <input type="email" id="email" placeholder="alex@example.com" required autocomplete="email">
-            </div>
+        <div class="form-group">
+          <label for="email">Email Address<span class="req">*</span></label>
+          <input type="email" id="email" placeholder="alex@example.com" required autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Mobile Phone<span class="req">*</span></label>
+          <input type="tel" id="phone" placeholder="(555) 000-0000" required autocomplete="tel" minlength="14">
+        </div>
+
+        <!-- Sales Experience Checkboxes -->
+        <div class="form-group">
+          <label>Previous Sales Experience (select all that apply)<span class="req">*</span></label>
+          <div class="checkbox-group" id="checkboxGroup">
+            <label class="checkbox-item">
+              <input type="checkbox" name="salesExp" value="Business to Business (B2B)"> Business to Business (B2B)
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="salesExp" value="Business to Client (B2C)"> Business to Client (B2C)
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="salesExp" value="Direct to Home (DTH)"> Direct to Home (DTH)
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="salesExp" value="Door to Door (D2D)"> Door to Door (D2D)
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="salesExp" value="No sales experience"> No sales experience
+            </label>
           </div>
+          <div id="salesExpError" class="error-msg">Please select at least one sales experience option.</div>
+        </div>
 
-          <div class="form-group">
-            <label for="phone">Mobile Phone<span class="req">*</span></label>
-            <div class="input-wrapper">
-              <input type="tel" id="phone" placeholder="(555) 000-0000" required autocomplete="tel" minlength="14">
-            </div>
-          </div>
+        <!-- Worked for Sunrun Dropdown -->
+        <div class="form-group">
+          <label for="worked_sunrun">Have you worked with Sunrun before?<span class="req">*</span></label>
+          <select id="worked_sunrun" required>
+            <option value="">Please Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
 
-          <!-- Sales Experience Checkboxes -->
-          <div class="form-group">
-            <label>Previous Sales Experience (select all that apply)<span class="req">*</span></label>
-            <div class="checkbox-group" id="checkboxGroup">
-              <label class="checkbox-item">
-                <input type="checkbox" name="salesExp" value="Business to Business (B2B)"> Business to Business (B2B)
-              </label>
-              <label class="checkbox-item">
-                <input type="checkbox" name="salesExp" value="Business to Client (B2C)"> Business to Client (B2C)
-              </label>
-              <label class="checkbox-item">
-                <input type="checkbox" name="salesExp" value="Direct to Home (DTH)"> Direct to Home (DTH)
-              </label>
-              <label class="checkbox-item">
-                <input type="checkbox" name="salesExp" value="Door to Door (D2D)"> Door to Door (D2D)
-              </label>
-              <label class="checkbox-item">
-                <input type="checkbox" name="salesExp" value="No sales experience"> No sales experience
-              </label>
-            </div>
-            <div id="salesExpError" class="error-msg">Please select at least one sales experience option.</div>
-          </div>
-
-          <!-- Worked for Sunrun Dropdown -->
-          <div class="form-group">
-            <label for="worked_sunrun">Have you worked with Sunrun before?<span class="req">*</span></label>
-            <div class="input-wrapper">
-              <select id="worked_sunrun" required>
-                <option value="">Please Select</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </div>
-          </div>
-
+        <div class="btn-container">
           <button type="submit" id="submitBtn">
             <span class="spinner" id="spinner"></span>
             <span id="btnText">Request Your Video Link</span>
           </button>
-        </form>
-
-        <p class="privacy-text">Your information is handled securely and used exclusively to send your orientation invitation.</p>
-      </div>
-
-      <!-- Immediate Feedback State -->
-      <div id="successSection" class="success-card">
-        <div class="check-ring">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
         </div>
-        <h2>Request Received!</h2>
-        <p>Your details have been logged into the candidate queue. Please keep an eye on your mobile device—your direct access link will be texted from:</p>
-        <div class="number-highlight">209-639-4845</div>
-        <p style="margin-top: 14px; font-size: 13px; color: #64748b;">Expect your message within the next 24 hours.</p>
-      </div>
+      </form>
 
+      <p class="privacy-text">Your information is handled securely and used exclusively to send your orientation invitation.</p>
     </div>
+
+    <!-- Success Panel -->
+    <div id="successSection" class="success-card">
+      <div class="check-ring">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h2>Request Received!</h2>
+      <p>Your details have been logged into the candidate queue. Please keep an eye on your mobile device—your direct access link will be texted from:</p>
+      <div class="number-highlight">209-639-4845</div>
+      <p style="margin-top: 14px; font-size: 13px; color: #64748b;">Expect your message within the next 24 hours.</p>
+    </div>
+
   </div>
 
   <script>
@@ -447,9 +495,8 @@
     const phoneInput = document.getElementById('phone');
     const salesExpCheckboxes = document.querySelectorAll('input[name="salesExp"]');
     const salesExpError = document.getElementById('salesExpError');
-    const checkboxGroup = document.getElementById('checkboxGroup');
 
-    // Auto-formats standard 10-digit US telephone numbers as user types
+    // Phone mask
     phoneInput.addEventListener('input', function(e) {
       let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
       e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
@@ -459,7 +506,6 @@
     salesExpCheckboxes.forEach(cb => {
       cb.addEventListener('change', function(e) {
         salesExpError.style.display = 'none';
-        checkboxGroup.classList.remove('has-error');
 
         if (e.target.value === 'No sales experience') {
           if (e.target.checked) {
@@ -487,8 +533,7 @@
 
       if (selectedExp.length === 0) {
         salesExpError.style.display = 'block';
-        checkboxGroup.classList.add('has-error');
-        checkboxGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        salesExpError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
       }
 
