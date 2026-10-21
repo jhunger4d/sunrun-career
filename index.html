@@ -137,6 +137,12 @@
       margin-bottom: 6px;
     }
 
+    .req {
+      color: #ea580c;
+      font-weight: 700;
+      margin-left: 2px;
+    }
+
     .input-wrapper {
       position: relative;
     }
@@ -169,7 +175,6 @@
       box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.12);
     }
 
-    /* Checkbox Group Styles */
     .checkbox-group {
       display: flex;
       flex-direction: column;
@@ -178,6 +183,12 @@
       padding: 12px 14px;
       border-radius: 10px;
       border: 1.5px solid var(--border-color);
+      transition: border-color 0.2s ease;
+    }
+
+    .checkbox-group.has-error {
+      border-color: #dc2626;
+      background: #fef2f2;
     }
 
     .checkbox-item {
@@ -204,7 +215,7 @@
       color: #dc2626;
       font-size: 12px;
       font-weight: 600;
-      margin-top: 4px;
+      margin-top: 5px;
     }
 
     button {
@@ -339,37 +350,37 @@
 
         <form id="recruitForm">
           <div class="form-group">
-            <label for="first_name">First Name</label>
+            <label for="first_name">First Name<span class="req">*</span></label>
             <div class="input-wrapper">
               <input type="text" id="first_name" placeholder="Alex" required autocomplete="given-name">
             </div>
           </div>
 
           <div class="form-group">
-            <label for="last_name">Last Name</label>
+            <label for="last_name">Last Name<span class="req">*</span></label>
             <div class="input-wrapper">
               <input type="text" id="last_name" placeholder="Morgan" required autocomplete="family-name">
             </div>
           </div>
 
           <div class="form-group">
-            <label for="email">Email Address</label>
+            <label for="email">Email Address<span class="req">*</span></label>
             <div class="input-wrapper">
               <input type="email" id="email" placeholder="alex@example.com" required autocomplete="email">
             </div>
           </div>
 
           <div class="form-group">
-            <label for="phone">Mobile Phone</label>
+            <label for="phone">Mobile Phone<span class="req">*</span></label>
             <div class="input-wrapper">
-              <input type="tel" id="phone" placeholder="(555) 000-0000" required autocomplete="tel">
+              <input type="tel" id="phone" placeholder="(555) 000-0000" required autocomplete="tel" minlength="14">
             </div>
           </div>
 
           <!-- Sales Experience Checkboxes -->
           <div class="form-group">
-            <label>Previous Sales Experience (select all that apply)</label>
-            <div class="checkbox-group">
+            <label>Previous Sales Experience (select all that apply)<span class="req">*</span></label>
+            <div class="checkbox-group" id="checkboxGroup">
               <label class="checkbox-item">
                 <input type="checkbox" name="salesExp" value="Business to Business (B2B)"> Business to Business (B2B)
               </label>
@@ -386,12 +397,12 @@
                 <input type="checkbox" name="salesExp" value="No sales experience"> No sales experience
               </label>
             </div>
-            <div id="salesExpError" class="error-msg">Please select at least one option.</div>
+            <div id="salesExpError" class="error-msg">Please select at least one sales experience option.</div>
           </div>
 
           <!-- Worked for Sunrun Dropdown -->
           <div class="form-group">
-            <label for="worked_sunrun">Have you worked with Sunrun before?</label>
+            <label for="worked_sunrun">Have you worked with Sunrun before?<span class="req">*</span></label>
             <div class="input-wrapper">
               <select id="worked_sunrun" required>
                 <option value="">Please Select</option>
@@ -436,6 +447,7 @@
     const phoneInput = document.getElementById('phone');
     const salesExpCheckboxes = document.querySelectorAll('input[name="salesExp"]');
     const salesExpError = document.getElementById('salesExpError');
+    const checkboxGroup = document.getElementById('checkboxGroup');
 
     // Auto-formats standard 10-digit US telephone numbers as user types
     phoneInput.addEventListener('input', function(e) {
@@ -446,19 +458,22 @@
     salesExpCheckboxes.forEach(cb => {
       cb.addEventListener('change', () => {
         salesExpError.style.display = 'none';
+        checkboxGroup.classList.remove('has-error');
       });
     });
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      // Collect selected sales experience options
+      // Check sales experience selection
       const selectedExp = Array.from(salesExpCheckboxes)
         .filter(cb => cb.checked)
         .map(cb => cb.value);
 
       if (selectedExp.length === 0) {
         salesExpError.style.display = 'block';
+        checkboxGroup.classList.add('has-error');
+        checkboxGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
       }
 
