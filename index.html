@@ -140,3 +140,368 @@
     .input-wrapper {
       position: relative;
     }
+
+    input, select {
+      width: 100%;
+      padding: 13px 14px;
+      font-size: 15px;
+      font-weight: 500;
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
+      outline: none;
+      transition: all 0.2s ease;
+      background: #fafafa;
+      color: var(--text-main);
+    }
+
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 16px;
+      cursor: pointer;
+    }
+
+    input:focus, select:focus {
+      background: #ffffff;
+      border-color: #ea580c;
+      box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.12);
+    }
+
+    /* Checkbox Group Styles */
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: #fafafa;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border-color);
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      user-select: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: #334155;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #ea580c;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .error-msg {
+      display: none;
+      color: #dc2626;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 14px rgba(255, 87, 34, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    }
+
+    button:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(255, 87, 34, 0.45);
+    }
+
+    button:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    button:disabled {
+      opacity: 0.85;
+      cursor: wait;
+      box-shadow: none;
+    }
+
+    .spinner {
+      display: none;
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #ffffff;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .privacy-text {
+      font-size: 12px;
+      color: #94a3b8;
+      text-align: center;
+      margin-top: 18px;
+      line-height: 1.4;
+    }
+
+    /* Success Panel */
+    .success-card {
+      display: none;
+      text-align: center;
+      padding: 20px 8px;
+      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .check-ring {
+      width: 68px;
+      height: 68px;
+      background: #ecfdf5;
+      border: 2px solid #a7f3d0;
+      color: #059669;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .success-card h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .success-card p {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .number-highlight {
+      display: inline-block;
+      background: #f1f5f9;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="top-bar"></div>
+    <div class="content">
+
+      <!-- Form View -->
+      <div id="formSection">
+        <div class="pill">
+          <div class="pill-dot"></div>
+          Direct Candidate Pathway
+        </div>
+        <h1>Take the Next Step</h1>
+        <p class="subtitle">Submit your details to receive access to the career opportunity video.</p>
+
+        <!-- Reassuring SMS Disclosure -->
+        <div class="sms-notice">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <p>After submitting your info, you'll receive a direct text message from <strong>209-639-4845</strong> within 24 hours containing your personalized video link.</p>
+        </div>
+
+        <form id="recruitForm">
+          <div class="form-group">
+            <label for="first_name">First Name</label>
+            <div class="input-wrapper">
+              <input type="text" id="first_name" placeholder="Alex" required autocomplete="given-name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <div class="input-wrapper">
+              <input type="text" id="last_name" placeholder="Morgan" required autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <div class="input-wrapper">
+              <input type="email" id="email" placeholder="alex@example.com" required autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Mobile Phone</label>
+            <div class="input-wrapper">
+              <input type="tel" id="phone" placeholder="(555) 000-0000" required autocomplete="tel">
+            </div>
+          </div>
+
+          <!-- Sales Experience Checkboxes -->
+          <div class="form-group">
+            <label>Previous Sales Experience (select all that apply)</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item">
+                <input type="checkbox" name="salesExp" value="Business to Business (B2B)"> Business to Business (B2B)
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="salesExp" value="Business to Client (B2C)"> Business to Client (B2C)
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="salesExp" value="Direct to Home (DTH)"> Direct to Home (DTH)
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="salesExp" value="Door to Door (D2D)"> Door to Door (D2D)
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="salesExp" value="No sales experience"> No sales experience
+              </label>
+            </div>
+            <div id="salesExpError" class="error-msg">Please select at least one option.</div>
+          </div>
+
+          <!-- Worked for Sunrun Dropdown -->
+          <div class="form-group">
+            <label for="worked_sunrun">Have you worked with Sunrun before?</label>
+            <div class="input-wrapper">
+              <select id="worked_sunrun" required>
+                <option value="">Please Select</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" id="submitBtn">
+            <span class="spinner" id="spinner"></span>
+            <span id="btnText">Request Your Video Link</span>
+          </button>
+        </form>
+
+        <p class="privacy-text">Your information is handled securely and used exclusively to send your orientation invitation.</p>
+      </div>
+
+      <!-- Immediate Feedback State -->
+      <div id="successSection" class="success-card">
+        <div class="check-ring">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h2>Request Received!</h2>
+        <p>Your details have been logged into the candidate queue. Please keep an eye on your mobile device—your direct access link will be texted from:</p>
+        <div class="number-highlight">209-639-4845</div>
+        <p style="margin-top: 14px; font-size: 13px; color: #64748b;">Expect your message within the next 24 hours.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('recruitForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const spinner = document.getElementById('spinner');
+    const formSection = document.getElementById('formSection');
+    const successSection = document.getElementById('successSection');
+    const phoneInput = document.getElementById('phone');
+    const salesExpCheckboxes = document.querySelectorAll('input[name="salesExp"]');
+    const salesExpError = document.getElementById('salesExpError');
+
+    // Auto-formats standard 10-digit US telephone numbers as user types
+    phoneInput.addEventListener('input', function(e) {
+      let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+      e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+    });
+
+    salesExpCheckboxes.forEach(cb => {
+      cb.addEventListener('change', () => {
+        salesExpError.style.display = 'none';
+      });
+    });
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Collect selected sales experience options
+      const selectedExp = Array.from(salesExpCheckboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
+
+      if (selectedExp.length === 0) {
+        salesExpError.style.display = 'block';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      spinner.style.display = 'inline-block';
+      btnText.innerText = 'Securing Your Priority Spot...';
+
+      const payload = {
+        "First Name": document.getElementById('first_name').value.trim(),
+        "Last Name": document.getElementById('last_name').value.trim(),
+        "Email": document.getElementById('email').value.trim(),
+        "Mobile Phone": phoneInput.value.trim(),
+        "Previous Sales Experience": selectedExp.join(', '),
+        "Worked with Sunrun Before": document.getElementById('worked_sunrun').value,
+        "_subject": "🚨 [URGENT LEAD] New Recruit Application",
+        "_template": "table",
+        "_captcha": "false"
+      };
+
+      fetch("https://formsubmit.co/ajax/jhunger4d@gmail.com", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(response => {
+        if (!response.ok) throw new Error('Submission error');
+        return response.json();
+      })
+      .then(() => {
+        formSection.style.display = 'none';
+        successSection.style.display = 'block';
+      })
+      .catch(() => {
+        alert("We were unable to submit your request. Please verify your connection and try again.");
+        submitBtn.disabled = false;
+        spinner.style.display = 'none';
+        btnText.innerText = 'Request Your Video Link';
+      });
+    });
+  </script>
+
+</body>
+</html>
