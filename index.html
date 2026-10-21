@@ -455,17 +455,32 @@
       e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
     });
 
+    // Mutually exclusive toggle for "No sales experience"
     salesExpCheckboxes.forEach(cb => {
-      cb.addEventListener('change', () => {
+      cb.addEventListener('change', function(e) {
         salesExpError.style.display = 'none';
         checkboxGroup.classList.remove('has-error');
+
+        if (e.target.value === 'No sales experience') {
+          if (e.target.checked) {
+            salesExpCheckboxes.forEach(other => {
+              if (other.value !== 'No sales experience') {
+                other.checked = false;
+              }
+            });
+          }
+        } else {
+          if (e.target.checked) {
+            const noExpCb = document.querySelector('input[name="salesExp"][value="No sales experience"]');
+            if (noExpCb) noExpCb.checked = false;
+          }
+        }
       });
     });
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      // Check sales experience selection
       const selectedExp = Array.from(salesExpCheckboxes)
         .filter(cb => cb.checked)
         .map(cb => cb.value);
